@@ -1,7 +1,8 @@
 import prisma from "@/lib/prisma";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { IdentityProvider } from "@prisma/client";
 import { AuthOptions } from "next-auth";
+import { Adapter } from "next-auth/adapters";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -15,6 +16,7 @@ const mapIDP = (idp: string): IdentityProvider => {
 };
 
 const authOptions: AuthOptions = {
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     EmailProvider({
       type: "email",
@@ -76,10 +78,10 @@ const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/login",
-    error: "/error",
+    signIn: "/auth/signin",
+    signOut: "/auth/signout",
+    error: "/auth/error",
   },
-  adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },

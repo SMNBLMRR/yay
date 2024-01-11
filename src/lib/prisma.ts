@@ -37,6 +37,7 @@ const prisma = globalThis.prisma ?? prismaClientSingleton();
 //    console.log("Duration: " + e.duration + "ms");
 //  });
 
+export { prisma }
 export default prisma;
 
 if (process.env.NODE_ENV !== "production") globalThis.prisma = prisma;

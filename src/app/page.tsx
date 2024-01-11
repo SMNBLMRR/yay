@@ -1,3 +1,4 @@
+import Header from "@/ui/Header";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,6 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
+    <Header />
       <div className="w-2/3 h-[130vh] flex flex-col justify-center items-center m-auto">
         <div className="flex flex-col">
           <span className="text-center text-xl font-semibold text-[#b9b4ff] w-2/3 m-auto -mt-20 mb-5">

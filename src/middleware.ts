@@ -39,7 +39,7 @@ export default withAuth(
   },
   {
     pages: {
-      signIn: "/auth/signin",
+      signIn: "/login",
     },
     callbacks: {
       authorized: ({ token }) => !!token,
@@ -48,5 +48,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/dashboard", "/api/:path*"],
+  matcher: ["/today", "/api/:path*"],
 };

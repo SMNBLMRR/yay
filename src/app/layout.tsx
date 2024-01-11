@@ -1,4 +1,3 @@
-import Header from "@/ui/Header";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -17,14 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={
           inter.className + " antialiased -tracking-[0.06375rem] bg-[#0f0e0e]"
         }
       >
         <Providers>
-          <Header />
           {children}
         </Providers>
       </body>
