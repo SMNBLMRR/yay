@@ -1,4 +1,4 @@
-import { InvalidAddTodoGoalException } from "@/app/exceptions/error";
+import { InvalidAddTodoGoalException } from "@/exceptions/error";
 import authOptions from "@/lib/authOptions";
 import { addTodoGoal, getTodoList } from "@/lib/todo";
 import { validateAddTodoGoal } from "@/schema/todo";
