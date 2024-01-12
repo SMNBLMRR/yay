@@ -14,17 +14,17 @@ type Inputs = {
 };
 
 const Login: FunctionComponent<LoginProps> = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
     <>
-    <Header />
+    {/* <Header />
     <div className="h-[calc(100vh-64px)] w-full flex justify-center items-center">
       <div className="flex flex-col w-1/4 m-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
@@ -92,7 +92,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           Continue with Apple
         </Button>
       </div>
-    </div>
+    </div> */}
     </>
   );
 };
