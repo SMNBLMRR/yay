@@ -14,22 +14,22 @@ type Inputs = {
 };
 
 const Login: FunctionComponent<LoginProps> = () => {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
-  // const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
     <>
-    {/* <Header />
+    {/* <Header /> */}
     <div className="h-[calc(100vh-64px)] w-full flex justify-center items-center">
       <div className="flex flex-col w-1/4 m-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           <div className="flex flex-col">
-            <Input
+            {/* <Input
               label="Email"
               placeholder="Insert you email addresss..."
               classNames={{
@@ -54,7 +54,7 @@ const Login: FunctionComponent<LoginProps> = () => {
                 ],
               }}
               {...register("email")}
-            />
+            /> */}
           </div>
           <Button
             className="mt-5 border-[#b9b4ff] text-[#b9b4ff]"
@@ -65,7 +65,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           {errors.email && <span>This field is required</span>}
         </form>
         <Divider className="my-10" />
-        <Button
+        {/* <Button
           onClick={async () => {
             try {
               signIn("google", {
@@ -82,7 +82,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           endContent={<FcGoogle size={20} />}
         >
           Continue with Google
-        </Button>
+        </Button> */}
         <Button
           className="mt-5"
           color="danger"
@@ -92,7 +92,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           Continue with Apple
         </Button>
       </div>
-    </div> */}
+    </div>
     </>
   );
 };
