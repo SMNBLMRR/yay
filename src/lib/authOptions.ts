@@ -17,6 +17,7 @@ const mapIDP = (idp: string): IdentityProvider => {
 
 const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     EmailProvider({
       type: "email",
