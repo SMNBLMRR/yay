@@ -23,52 +23,6 @@ const authOptions: AuthOptions = {
       server: "",
       from: "onboarding@resend.dev",
     }),
-    // CredentialsProvider({
-    //   name: "Credentials",
-    //   credentials: {
-    //     email: {
-    //       label: "Email",
-    //       type: "text",
-    //       placeholder: "Enter your email address...",
-    //     },
-    //     password: {
-    //       label: "Password",
-    //       type: "password",
-    //       placeholder: "*********",
-    //     },
-    //   },
-    //   //@ts-ignore
-    //   async authorize(credentials, req) {
-    //     if (!isValidCredentials(credentials as any))
-    //       throw new Error("Invalid credentials");
-
-    //     console.log(credentials?.email)
-    //     const user = await prisma.user.findUnique({
-    //       where: {
-    //         //@ts-ignore
-    //         email: credentials?.email,
-    //       },
-    //     });
-
-    //     console.log(user);
-
-    //     if (!user) return null;
-
-    //     const isCorrectPassword = await bcryptjs.compare(
-    //       //@ts-ignore
-    //       credentials?.password,
-    //       //@ts-ignore
-    //       user.password
-    //     );
-
-    //     if (!isCorrectPassword) return null;
-
-    //     return {
-    //       id: user?.id,
-    //       email: user.email
-    //     };
-    //   },
-    // }),
     GoogleProvider({
       //@ts-ignore
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -78,20 +32,32 @@ const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
-    error: "/auth/error",
+    signIn: "/login",
+    error: "/error",
   },
   session: {
     strategy: "jwt",
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      if (account?.type === "credentials") {
-        return true;
-      }
       if (!user.email) {
         return false;
+      }
+
+      let findUserTodo = await prisma.todo.findMany({
+        where: {
+          userId: user.id,
+        },
+      });
+
+      if (findUserTodo && findUserTodo.length < 1) {
+        let newTodo = await prisma.todo.create({
+          data: {
+            name: "today",
+            userId: user.id,
+          },
+        });
+        if (!newTodo) return false;
       }
 
       //check the user provider

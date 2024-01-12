@@ -69,7 +69,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           onClick={async () => {
             try {
               signIn("google", {
-                callbackUrl: "/dashboard",
+                callbackUrl: "/app/today",
               });
             } catch (e) {
               console.log(e);
