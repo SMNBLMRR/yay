@@ -39,7 +39,7 @@ export default withAuth(
   },
   {
     pages: {
-      signIn: "/auth/signin",
+      signIn: "/login",
     },
     callbacks: {
       authorized: ({ token }) => !!token,

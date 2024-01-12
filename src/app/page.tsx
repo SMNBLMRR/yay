@@ -23,7 +23,7 @@ export default function Home() {
             color="secondary"
             variant="flat"
             as={Link}
-            href="/auth/signin"
+            href="/login"
           >
             Try for free
           </Button>

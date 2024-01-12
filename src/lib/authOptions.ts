@@ -33,7 +33,7 @@ const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/login",
     error: "/error",
   },
   session: {
