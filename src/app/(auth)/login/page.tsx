@@ -66,7 +66,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           </form>
           <Divider className="my-10" />
           <Button
-            onClick={() => signIn("google")}
+            onClick={() => {console.log("ciao")}}
             className="mt-2"
             color="danger"
             variant="bordered"
