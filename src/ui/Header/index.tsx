@@ -29,7 +29,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
               as={Link}
               color="secondary"
               className="text-[#9229ff] font-medium"
-              href="/login"
+              href="/auth/signin"
               variant="flat"
             >
               Log in
