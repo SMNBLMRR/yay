@@ -29,7 +29,7 @@ const Login: FunctionComponent<LoginProps> = () => {
       <div className="flex flex-col w-1/4 m-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           <div className="flex flex-col">
-            {/* <Input
+            <Input
               label="Email"
               placeholder="Insert you email addresss..."
               classNames={{
@@ -54,7 +54,7 @@ const Login: FunctionComponent<LoginProps> = () => {
                 ],
               }}
               {...register("email")}
-            /> */}
+            />
           </div>
           <Button
             className="mt-5 border-[#b9b4ff] text-[#b9b4ff]"
