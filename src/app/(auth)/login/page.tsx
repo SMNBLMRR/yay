@@ -65,12 +65,10 @@ const Login: FunctionComponent<LoginProps> = () => {
           {errors.email && <span>This field is required</span>}
         </form>
         <Divider className="my-10" />
-        <button onClick={() => signIn("google")}></button>
-        {/* <Button
+        <Button
           onClick={() => {
-            signIn("email", {
-              redirect:false,
-              email:"semn@gft.com"
+            signIn("google", {
+                callbackUrl: "/app/today",
               });
             } 
           }
@@ -80,7 +78,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           endContent={<FcGoogle size={20} />}
         >
           Continue with Google
-        </Button> */}
+        </Button>
         <Button
           className="mt-5"
           color="danger"
