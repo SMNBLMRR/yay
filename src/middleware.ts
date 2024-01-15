@@ -48,5 +48,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/today", "/api/:path*"],
+  matcher: ["/app", "/api/:path*"],
 };

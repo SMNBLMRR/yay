@@ -45,22 +45,6 @@ const authOptions: AuthOptions = {
         return false;
       }
 
-      let findUserTodo = await prisma.todo.findMany({
-        where: {
-          userId: user.id,
-        },
-      });
-
-      if (findUserTodo && findUserTodo.length < 1) {
-        let newTodo = await prisma.todo.create({
-          data: {
-            name: "today",
-            userId: user.id,
-          },
-        });
-        if (!newTodo) return false;
-      }
-
       //check the user provider
       //works without credentials
       if (account?.provider) {
@@ -125,3 +109,4 @@ const authOptions: AuthOptions = {
 };
 
 export default authOptions;
+

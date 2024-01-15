@@ -1,9 +1,21 @@
 import {
   InvalidAddTodoGoalException,
+  TodoCreationError,
   TodoNotFoundException,
 } from "@/exceptions/error";
 import { prisma } from "@/lib/prisma";
 import { GoalPayload } from "@/types/todo";
+
+export async function createTodo(title: string, userId: string) {
+  let newTodo = await prisma.todo.create({
+    data: {
+      name: title,
+      userId,
+    },
+  });
+  return newTodo;
+}
+
 export async function getTodoList(userId: string) {
   let todo;
   todo = await prisma.todo.findFirst({
@@ -11,8 +23,6 @@ export async function getTodoList(userId: string) {
       userId,
     },
   });
-  if (!todo)
-    throw new TodoNotFoundException("Impossible to retrieve the todo do list");
   return todo;
 }
 
