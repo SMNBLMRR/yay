@@ -10,6 +10,7 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
     <>
       <Select
       radius="sm"
+      aria-label="select-priority"
       placeholder="Priority"
       labelPlacement="outside"
       className="max-w-xs"

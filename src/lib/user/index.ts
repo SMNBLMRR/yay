@@ -1,7 +1,6 @@
-import { UserType } from "@/types/user";
-
+import { prisma } from "@/lib/prisma";
 export async function getUserInfo(userId:string){
-  return await prisma?.user.findFirst({
+  return await prisma.user.findFirst({
     where:{
       id:userId
     },

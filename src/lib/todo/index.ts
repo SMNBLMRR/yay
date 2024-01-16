@@ -34,6 +34,7 @@ export async function addTodoGoal(payload: GoalPayload, todoId: string) {
       todoId,
     },
   });
+  console.log(createdGaol);
   if (!createdGaol)
     throw new InvalidAddTodoGoalException("Impossible to create todo");
   return createdGaol;
