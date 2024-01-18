@@ -34,8 +34,16 @@ export async function addTodoGoal(payload: GoalPayload, todoId: string) {
       todoId,
     },
   });
-  console.log(createdGaol);
   if (!createdGaol)
     throw new InvalidAddTodoGoalException("Impossible to create todo");
   return createdGaol;
+}
+
+export async function getGoalsFromTodo(todoId:string){
+  let goals = await prisma.goals.findMany({
+    where:{
+      todoId:todoId
+    }
+  });  
+  return goals;
 }

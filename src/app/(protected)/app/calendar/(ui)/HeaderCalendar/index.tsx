@@ -6,7 +6,7 @@ import { startOfMonth } from "date-fns/startOfMonth";
 interface HeaderCalendarProps {}
 
 const HeaderCalendar: FunctionComponent<HeaderCalendarProps> = () => {
-  const { prev, next, trackerMonth } = useCalendarStore();
+  const { trackerMonth } = useCalendarStore();
   return (
     <div className="w-full h-[50px] border border-gray-700 bg-black flex items-center rounded-tl-xl rounded-tr-xl">
       <span className="ml-2 text-[#b8b4ff]">

@@ -5,17 +5,20 @@ const siteConfig = {
     {
       lvl:1,
       label:"low",
-      key:"LOW"
+      key:"LOW",
+      color:"bg-[#06d6a0]"
     },
     {
       lvl:2,
       label:"medium",
-      key:"MEDIUM"
+      key:"MEDIUM",
+      color:"bg-[#ffd60a]"
     },
     {
       lvl:3,
       label:"higt",
-      key:"HIGH"
+      key:"HIGH",
+      color:"bg-[#ff0054]"
     }
   ]
 }

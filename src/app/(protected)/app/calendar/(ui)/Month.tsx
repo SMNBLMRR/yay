@@ -8,8 +8,8 @@ interface MonthProps {
 
 const Month: FunctionComponent<MonthProps> = ({ month }) => {
   //quì va fatta la chiamata per ricevere tutti gli eventi del mese
-  const value = use(fetch("/api/task"));
-  console.log(value);
+  // const value = use(fetch("/api/task"));
+  // console.log(value);
   
   return (
     <>

@@ -18,7 +18,8 @@ const config: Config = {
       },
       boxShadow:{
         'hero-img': '0px 24px 100px 0px #9406ff59',
-        'nav-menu': '0px 10px 100px 0px #3535b78f'
+        'nav-menu': '0px 10px 100px 0px #3535b78f',
+        'modal': '0px 0px 200px 0px #634dff38'
       }
     },
   },
