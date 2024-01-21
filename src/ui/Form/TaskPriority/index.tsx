@@ -1,6 +1,5 @@
 "use client";
-import siteConfig from "@/config/site";
-import { Select, SelectItem, SelectSection } from "@nextui-org/react";
+import { Select, SelectItem } from "@nextui-org/react";
 import { FunctionComponent } from "react";
 
 interface TaskPriorityProps {}
@@ -48,7 +47,14 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
         <SelectItem
           key={1}
           classNames={{
-            base: ["bg-[#06d6a0]", "text-white", `dark:hover:bg-[#06d6a0]`],
+            base: [
+              "bg-[#06d6a0]",
+              "text-white",
+              `dark:hover:bg-[#06d6a0]`,
+              "px-[10px]",
+              "py-0.5",
+            ],
+            selectedIcon: ["hidden"],
           }}
         >
           LOW
@@ -56,7 +62,14 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
         <SelectItem
           key={2}
           classNames={{
-            base: ["bg-[#ffd60a]", "text-white", `dark:hover:bg-[#ffd60a]`],
+            base: [
+              "bg-[#ffd60a]",
+              "text-white",
+              "dark:hover:bg-[#ffd60a]",
+              "px-[10px]",
+              "py-0.5",
+            ],
+            selectedIcon: ["hidden"],
           }}
         >
           MEDIUM
@@ -64,24 +77,18 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
         <SelectItem
           key={3}
           classNames={{
-            base: ["bg-[#ff0054]", "text-white", `dark:hover:bg-[#ff0054]`],
+            base: [
+              "bg-[#ff0054]",
+              "text-white",
+              `dark:hover:bg-[#ff0054]`,
+              "px-[10px]",
+              "py-0.5",
+            ],
+            selectedIcon: ["hidden"],
           }}
         >
           HIGH
         </SelectItem>
-        {/* {siteConfig.priorities.map((p) => {
-          return (
-            <SelectItem
-              classNames={{
-                base: [p.color, `dark:hover${p.color}`],
-              }}
-              key={p.key}
-              value={p.lvl}
-            >
-              {p.label}
-            </SelectItem>
-          );
-        })} */}
       </Select>
     </>
   );

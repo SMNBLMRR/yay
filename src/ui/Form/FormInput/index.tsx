@@ -1,16 +1,15 @@
 import { Input } from "@nextui-org/react";
 import { FunctionComponent } from "react";
-import TaskPriority from "../TaskPriority";
-import { useForm } from "react-hook-form";
 import DatePicker from "../DatePicker";
 import TaskInputOption from "../TaskInputOption";
+import TaskPriority from "../TaskPriority";
 
 export type Inputs = {
   [key: string]: string;
 };
 
 interface FormInputProps {
-  onSubmit: (data: Inputs) => void;
+  register:any;
   name: string;
   inputProps?: any;
   classNames?: any;
@@ -18,47 +17,44 @@ interface FormInputProps {
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
-  onSubmit,
+  register,
   name,
   inputProps,
   classNames,
   isDatePickerVisible = true,
 }) => {
-  const { register, handleSubmit } = useForm<Inputs>();
 
   const inputName = name as keyof Inputs;
   return (
     <div className="h-[40px] bg-gray-700 mt-5 rounded flex">
       {/* input section */}
       <div className="flex w-full">
-        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            className="w-full"
-            type="text"
-            placeholder="Add task..."
-            classNames={{
-              input: [
-                "bg-transparent",
-                "placeholder:text-black",
-                "w-full",
-                ...(classNames?.input || []),
-              ],
-              innerWrapper: [
-                "bg-transparent",
-                ...(classNames?.innerWrapper || []),
-              ],
-              inputWrapper: [
-                "h-auto",
-                "bg-transparent",
-                "dark:hover:bg-transparent",
-                "dark:focus-within:bg-transparent",
-                ...(classNames?.inputWrapper || []),
-              ],
-            }}
-            {...register(inputName as string, { required: true })}
-            {...inputProps}
-          />
-        </form>
+        <Input
+          className="w-full"
+          type="text"
+          placeholder="Add task..."
+          classNames={{
+            input: [
+              "bg-transparent",
+              "placeholder:text-black",
+              "w-full",
+              ...(classNames?.input || []),
+            ],
+            innerWrapper: [
+              "bg-transparent",
+              ...(classNames?.innerWrapper || []),
+            ],
+            inputWrapper: [
+              "h-auto",
+              "bg-transparent",
+              "dark:hover:bg-transparent",
+              "dark:focus-within:bg-transparent",
+              ...(classNames?.inputWrapper || []),
+            ],
+          }}
+          {...register(inputName as string, { required: true })}
+          {...inputProps}
+        />
       </div>
       {/* filter | options section */}
       <div className="ml-2 flex w-auto">

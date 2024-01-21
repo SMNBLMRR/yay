@@ -4,7 +4,7 @@ import { getCurrentDayClass } from "@/lib/calendar";
 import { useDisclosure } from "@nextui-org/react";
 import { format } from "date-fns";
 import { FunctionComponent } from "react";
-import ModalTask from "./ModalTask";
+import ModalTask from "./modal-task";
 
 interface DayProps {
   day: string;

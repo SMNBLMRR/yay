@@ -15,9 +15,9 @@ export async function PUT(reques: Request) {
   if (session?.user.id) {
     try {
       let todo = await getTodoList(session.user.id);
-      console.log("this is the todo",todo);
+      console.log("this is the todo", todo);
       let newGoal;
-      if(todo) newGoal = await addTodoGoal(payload, todo.id);
+      if (todo) newGoal = await addTodoGoal(payload, todo.id);
       NextResponse.json(newGoal, { status: 201 });
     } catch (e) {
       console.log(e);
@@ -42,30 +42,52 @@ export async function PUT(reques: Request) {
   );
 }
 
-export async function GET(req:NextRequest){
+export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
-  if(session){
+  if (session) {
     let todo = await prisma.todo.findFirst({
-      where:{
-        userId:session.user.id
-      }
-    })
-    if(todo){
-      const startDate = new Date('2024-01-01');
-      const endDate = new Date('2024-01-31');
+      where: {
+        userId: session.user.id,
+      },
+    });
+    if (todo) {
+      const startDate = new Date("2024-01-01");
+      const endDate = new Date("2024-01-31");
       let events = await prisma.goals.findMany({
-        where:{
-          todoId:todo?.id,
-          createdAt:{
-            gte: startDate, 
-            lte: endDate, 
-          }
+        where: {
+          todoId: todo?.id,
+          createdAt: {
+            gte: startDate,
+            lte: endDate,
+          },
         },
-      })
+      });
       console.log(events);
-      return NextResponse.json(events)
+      return NextResponse.json(events);
     }
   }
-  return NextResponse.json({msg:"nothing to print"})
+  return NextResponse.json({ msg: "nothing to print" });
 }
 
+export async function DELETE(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  const session = await getServerSession(authOptions);
+  if (session && id) {
+    let todo = await prisma.todo.findFirst({
+      where: {
+        userId: session.user.id,
+      },
+    });
+    if (todo) {
+      await prisma.goals.deleteMany({
+        where: {
+          id: Number(id),
+          todoId: todo.id,
+        },
+      });
+      return NextResponse.json({ msg: "deleted todo n° " + id });
+    }
+  }
+  return NextResponse.json({ msg: "nothing to print" });
+}

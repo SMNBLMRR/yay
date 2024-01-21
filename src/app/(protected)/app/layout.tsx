@@ -3,15 +3,15 @@ import { FunctionComponent } from "react";
 import authOptions from "@/lib/authOptions";
 import { getUserInfo } from "@/lib/user";
 import { getServerSession } from "next-auth";
-import Info from "./(ui)/Info";
+import Info from "./(ui)/info-component";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: FunctionComponent<LayoutProps> = async ({ children }) => {
-  const session = await getServerSession(authOptions);
 
+  const session = await getServerSession(authOptions);
   const userInfo = await getUserInfo(session?.user.id);
 
   return (

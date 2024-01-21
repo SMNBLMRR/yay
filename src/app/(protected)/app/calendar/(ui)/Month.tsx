@@ -1,6 +1,6 @@
 "use client";
-import React, { FunctionComponent, use } from "react";
-import Day from "./Day";
+import React, { FunctionComponent } from "react";
+import Day from "./day-component";
 
 interface MonthProps {
   month:string[][]

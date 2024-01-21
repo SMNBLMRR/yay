@@ -10,10 +10,10 @@ const HeaderCalendar: FunctionComponent<HeaderCalendarProps> = () => {
   return (
     <div className="w-full h-[50px] border border-gray-700 bg-black flex items-center rounded-tl-xl rounded-tr-xl">
       <span className="ml-2 text-[#b8b4ff]">
-      {format(
-        startOfMonth(new Date(getYear(new Date()), trackerMonth)),
-        "MMMM yyyy"
-      )}
+        {format(
+          startOfMonth(new Date(getYear(new Date()), trackerMonth)),
+          "MMMM yyyy"
+        )}
       </span>
     </div>
   );

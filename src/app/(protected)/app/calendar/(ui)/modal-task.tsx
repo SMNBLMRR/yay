@@ -1,3 +1,4 @@
+"use client";
 import { useCalendarStore } from "@/store/calendar";
 import FormInput, { Inputs } from "@/ui/Form/FormInput";
 import {
@@ -6,11 +7,11 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader
+  ModalHeader,
 } from "@nextui-org/react";
 import { format, getYear, startOfMonth } from "date-fns";
 import { FunctionComponent } from "react";
-import { SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface ModalTaskProps {
   isOpen: any;
@@ -25,18 +26,19 @@ const ModalTask: FunctionComponent<ModalTaskProps> = ({
 }) => {
   const { trackerMonth } = useCalendarStore();
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-  
-  // const handleSubmit = async (e: any) => {
-  //   const data = {
-  //     name: taskValue,
-  //   };
-  //   e.preventDefault();
-  //   let resp = await fetch("/api/task", {
-  //     method: "PUT",
-  //     body: JSON.stringify(data),
-  //   });
-  //   console.log(resp);
-  // };
+  const { register } = useForm<Inputs>();
+
+  const handleSubmit = async (e: any) => {
+    const data = {
+      name: "dfafafwf",
+    };
+    e.preventDefault();
+    let resp = await fetch("/api/task", {
+      method: "PUT",
+      body: JSON.stringify(data),
+    });
+    console.log(resp);
+  };
 
   return (
     <Modal
@@ -59,17 +61,23 @@ const ModalTask: FunctionComponent<ModalTaskProps> = ({
                 )}
               </div>
             </ModalHeader>
-            <ModalBody>
-              <FormInput name="name" onSubmit={onSubmit} isDatePickerVisible={false} />
-            </ModalBody>
-            <ModalFooter>
-              <Button color="danger" variant="light" onPress={onClose}>
-                Close
-              </Button>
-              <Button className="bg-[#b8b4ff] text-black" onPress={onClose}>
-                Add task
-              </Button>
-            </ModalFooter>
+            <form action="" onSubmit={handleSubmit}>
+              <ModalBody>
+                <FormInput
+                  name="name"
+                  register={register}
+                  isDatePickerVisible={false}
+                />
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button type="submit" className="bg-[#b8b4ff] text-black" onPress={onClose}>
+                  Add task
+                </Button>
+              </ModalFooter>
+            </form>
           </>
         )}
       </ModalContent>

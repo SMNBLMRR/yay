@@ -1,7 +1,7 @@
 "use client";
 import { FunctionComponent } from "react";
-import Month from "./Month";
-import HeaderCalendar from "./HeaderCalendar";
+import Month from "./month";
+import HeaderCalendar from "./header-calendar";
 import { useCalendarStore } from "@/store/calendar";
 
 interface CalendarComponentProps {}
