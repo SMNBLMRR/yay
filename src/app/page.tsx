@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
     <Header />
-      <div className="w-2/3 h-[130vh] flex flex-col justify-center items-center m-auto">
+      <div className="w-2/3 h-auto flex flex-col justify-center items-center m-auto py-[20vh]">
         <div className="flex flex-col">
-          <span className="text-center text-xl font-semibold text-[#b9b4ff] w-2/3 m-auto -mt-20 mb-5">
+          <span className="text-center text-xl font-semibold text-[#b9b4ff] w-2/3 m-auto mb-5">
             Discover the art of intentional living as you effortlessly manage
             your tasks, organize your goals, and reclaim control over your time,
             all within a single, intuitive app."

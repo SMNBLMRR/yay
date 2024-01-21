@@ -42,17 +42,38 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
             "dark:text-white",
           ],
           value: ["text-[#B9B4FF]"],
-          selectorIcon:["text-[#B9B4FF]"]
+          selectorIcon: ["text-[#B9B4FF]"],
         }}
       >
-        {siteConfig.priorities.map((p) => {
-          let c = p.color;
-          console.log("bg-red-700")
-          console.log(c);
+        <SelectItem
+          key={1}
+          classNames={{
+            base: ["bg-[#06d6a0]", "text-white", `dark:hover:bg-[#06d6a0]`],
+          }}
+        >
+          LOW
+        </SelectItem>
+        <SelectItem
+          key={2}
+          classNames={{
+            base: ["bg-[#ffd60a]", "text-white", `dark:hover:bg-[#ffd60a]`],
+          }}
+        >
+          MEDIUM
+        </SelectItem>
+        <SelectItem
+          key={3}
+          classNames={{
+            base: ["bg-[#ff0054]", "text-white", `dark:hover:bg-[#ff0054]`],
+          }}
+        >
+          HIGH
+        </SelectItem>
+        {/* {siteConfig.priorities.map((p) => {
           return (
             <SelectItem
               classNames={{
-                base: [c, `dark:hover${p.color}`],
+                base: [p.color, `dark:hover${p.color}`],
               }}
               key={p.key}
               value={p.lvl}
@@ -60,7 +81,7 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
               {p.label}
             </SelectItem>
           );
-        })}
+        })} */}
       </Select>
     </>
   );

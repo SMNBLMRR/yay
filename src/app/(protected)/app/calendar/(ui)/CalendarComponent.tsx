@@ -12,7 +12,7 @@ const CalendarComponent: FunctionComponent<CalendarComponentProps> = () => {
     <>
       <div className="flex flex-col flex-1 p-7 h-[90%] m-auto">
         <HeaderCalendar />
-        <Month month={month}/>
+        <Month month={month} />
       </div>
     </>
   );
