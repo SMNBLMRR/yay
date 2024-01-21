@@ -1,7 +1,7 @@
 import { UserNotFoundException } from "@/exceptions/error";
 import authOptions from "@/lib/authOptions";
 import { getGoalsFromTodo, getTodoList } from "@/lib/todo";
-import { Chip } from "@nextui-org/react";
+import { Chip, Divider, Spinner } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
 import { FunctionComponent, Suspense } from "react";
 import { BsFilterCircleFill } from "react-icons/bs";
@@ -46,7 +46,10 @@ const Today: FunctionComponent<TodayProps> = async () => {
         </div>
       </div>
       <HeaderTodo />
-      <Suspense fallback={<Loading />}>
+      {Array.isArray(goals) && goals?.length > 0 ? (
+        <Divider orientation="horizontal" />
+      ): null}
+      <Suspense fallback={<Spinner color="secondary"/>}>
         <Goals goals={goals} />
       </Suspense>
     </div>
@@ -54,7 +57,3 @@ const Today: FunctionComponent<TodayProps> = async () => {
 };
 
 export default Today;
-
-function Loading() {
-  return <h2>🌀 Loading...</h2>;
-}

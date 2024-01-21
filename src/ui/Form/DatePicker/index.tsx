@@ -12,13 +12,16 @@ import React, { FunctionComponent, useState } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { IoCalendarOutline } from "react-icons/io5";
 import { GoDot } from "react-icons/go";
+import { useForm } from "react-hook-form";
+import { Inputs } from "../FormInput";
 
 interface DatePickerProps {
-  register: any;
+  name:string;
 }
 
-const DatePicker: FunctionComponent<DatePickerProps> = ({ register }) => {
+const DatePicker: FunctionComponent<DatePickerProps> = ({ name }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { register } = useForm<Inputs>();
   const [datePickValue, setDatePickValue] = useState(
     format(new Date(), "yyyy-MM-dd")
   );
@@ -85,7 +88,7 @@ const DatePicker: FunctionComponent<DatePickerProps> = ({ register }) => {
                     <header className="flex flex-col w-full rounded">
                       <div className="flex justify-between items-center px-2 h-fit">
                         <input
-                          {...register("date")}
+                          {...register(name)}
                           type="hidden"
                           value={day}
                           name="date"

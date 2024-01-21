@@ -1,3 +1,4 @@
+"use client";
 import { Input } from "@nextui-org/react";
 import { FunctionComponent } from "react";
 import DatePicker from "../DatePicker";
@@ -9,24 +10,24 @@ export type Inputs = {
 };
 
 interface FormInputProps {
-  register:any;
   name: string;
+  register?:any
   inputProps?: any;
   classNames?: any;
   isDatePickerVisible?: boolean;
 }
 
 const FormInput: FunctionComponent<FormInputProps> = ({
-  register,
   name,
+  register,
   inputProps,
   classNames,
   isDatePickerVisible = true,
 }) => {
-
   const inputName = name as keyof Inputs;
+
   return (
-    <div className="h-[40px] bg-gray-700 mt-5 rounded flex">
+    <div className="h-[40px] bg-[#1d1d1d] mt-5 rounded-lg flex">
       {/* input section */}
       <div className="flex w-full">
         <Input
@@ -36,7 +37,6 @@ const FormInput: FunctionComponent<FormInputProps> = ({
           classNames={{
             input: [
               "bg-transparent",
-              "placeholder:text-black",
               "w-full",
               ...(classNames?.input || []),
             ],
@@ -63,7 +63,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({
         </div>
         {isDatePickerVisible ? (
           <div className="flex flex-grow items-center justify-center mx-1">
-            <DatePicker register={register} />
+            <DatePicker name="date" />
           </div>
         ) : null}
         <div className="flex flex-grow items-center justify-center mx-1">

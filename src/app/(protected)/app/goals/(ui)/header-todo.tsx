@@ -1,21 +1,26 @@
 "use client";
-import FormInput, { Inputs } from "@/ui/Form/FormInput";
+import { addGoalTodoAction } from "@/actions/todo";
+import { GoalPayload } from "@/types/todo";
+import FormInput from "@/ui/Form/FormInput";
 import { Button } from "@nextui-org/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface HeaderTodoProps {}
 
 const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
-  const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    
+  const { handleSubmit, register } = useForm<GoalPayload>();
+  const [, startTransition] = useTransition();
+  const onSubmit: SubmitHandler<GoalPayload> = async (data) => {
+    startTransition(async () => {
+      await addGoalTodoAction(data as GoalPayload);
+    });
   };
 
   return (
     <>
       <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-        <FormInput name="goal" register={register} />
+        <FormInput register={register} name="name" />
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-700">
             By default, tasks added here will be due today. Click + to add a
@@ -23,12 +28,6 @@ const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
           </span>
           {/* filter | add section */}
           <div className="flex my-2">
-            <Button
-              radius="sm"
-              className="h-fit py-1 bg-transparent border border-[#F72585] text-[#F72585]"
-            >
-              Cancel
-            </Button>
             <Button
               radius="sm"
               type="submit"

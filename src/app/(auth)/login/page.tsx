@@ -68,7 +68,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           <Button
             onClick={() => {
               signIn("google", {
-                callbackUrl: "/app",
+                callbackUrl: "/app/goals",
               });
             }}
             className="mt-2"

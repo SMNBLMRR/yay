@@ -1,6 +1,8 @@
 "use client";
+import { addGoalTodoAction } from "@/actions/todo";
 import { useCalendarStore } from "@/store/calendar";
-import FormInput, { Inputs } from "@/ui/Form/FormInput";
+import { GoalPayload } from "@/types/todo";
+import FormInput from "@/ui/Form/FormInput";
 import {
   Button,
   Modal,
@@ -10,7 +12,7 @@ import {
   ModalHeader,
 } from "@nextui-org/react";
 import { format, getYear, startOfMonth } from "date-fns";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface ModalTaskProps {
@@ -25,19 +27,13 @@ const ModalTask: FunctionComponent<ModalTaskProps> = ({
   day,
 }) => {
   const { trackerMonth } = useCalendarStore();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-  const { register } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<GoalPayload>();
+  const [, startTransition] = useTransition();
 
-  const handleSubmit = async (e: any) => {
-    const data = {
-      name: "dfafafwf",
-    };
-    e.preventDefault();
-    let resp = await fetch("/api/task", {
-      method: "PUT",
-      body: JSON.stringify(data),
+  const onSubmit: SubmitHandler<GoalPayload> = async (data) => {
+    startTransition(async () => {
+      await addGoalTodoAction(data as GoalPayload);
     });
-    console.log(resp);
   };
 
   return (
@@ -61,7 +57,7 @@ const ModalTask: FunctionComponent<ModalTaskProps> = ({
                 )}
               </div>
             </ModalHeader>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="" onSubmit={handleSubmit(onSubmit)}>
               <ModalBody>
                 <FormInput
                   name="name"
@@ -73,7 +69,11 @@ const ModalTask: FunctionComponent<ModalTaskProps> = ({
                 <Button color="danger" variant="light" onPress={onClose}>
                   Close
                 </Button>
-                <Button type="submit" className="bg-[#b8b4ff] text-black" onPress={onClose}>
+                <Button
+                  type="submit"
+                  className="bg-[#b8b4ff] text-black"
+                  onPress={onClose}
+                >
                   Add task
                 </Button>
               </ModalFooter>
