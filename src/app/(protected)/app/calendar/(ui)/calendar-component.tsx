@@ -1,6 +1,6 @@
 "use client";
 import { FunctionComponent } from "react";
-import Month from "./month";
+import Month from "./month-component";
 import HeaderCalendar from "./header-calendar";
 import { useCalendarStore } from "@/store/calendar";
 
