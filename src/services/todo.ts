@@ -3,7 +3,7 @@ import {
   UserNotFoundException,
 } from "@/exceptions/error";
 import authOptions from "@/lib/authOptions";
-import { addTodoGoal, deleteTodoGoal, getTodoList } from "@/lib/todo";
+import { addTodoGoal, deleteTodoGoal, getTodoList } from "@/queries/todo";
 import { GoalPayload } from "@/types/todo";
 import { getServerSession } from "next-auth";
 

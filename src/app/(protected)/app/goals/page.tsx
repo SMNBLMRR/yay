@@ -1,6 +1,6 @@
 import { UserNotFoundException } from "@/exceptions/error";
 import authOptions from "@/lib/authOptions";
-import { getGoalsFromTodo, getTodoList } from "@/lib/todo";
+import { getGoalsFromTodo, getTodoList } from "@/queries/todo";
 import { Chip, Divider, Spinner } from "@nextui-org/react";
 import { getServerSession } from "next-auth";
 import { FunctionComponent, Suspense } from "react";
@@ -48,8 +48,8 @@ const Today: FunctionComponent<TodayProps> = async () => {
       <HeaderTodo />
       {Array.isArray(goals) && goals?.length > 0 ? (
         <Divider orientation="horizontal" />
-      ): null}
-      <Suspense fallback={<Spinner color="secondary"/>}>
+      ) : null}
+      <Suspense fallback={<Spinner color="secondary" />}>
         <Goals goals={goals} />
       </Suspense>
     </div>

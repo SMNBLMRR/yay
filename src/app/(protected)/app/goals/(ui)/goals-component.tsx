@@ -11,9 +11,7 @@ import {
   Input,
 } from "@nextui-org/react";
 import { Todo } from "@prisma/client";
-import { FunctionComponent, useState, useTransition } from "react";
-
-import { TiDeleteOutline } from "react-icons/ti";
+import { FunctionComponent, useTransition } from "react";
 import { RiMoreFill } from "react-icons/ri";
 
 interface GoalsProps {
@@ -22,7 +20,6 @@ interface GoalsProps {
 
 const Goals: FunctionComponent<GoalsProps> = ({ goals }) => {
   const [, startTransition] = useTransition();
-  const [starColor, setStarColor] = useState(false);
   const handleDeleteGoalFn = async (id: string) => {
     startTransition(async () => {
       await handleDeleteGoalAction(id);
@@ -80,10 +77,8 @@ const Goals: FunctionComponent<GoalsProps> = ({ goals }) => {
             </div>
             {/* actions section */}
             <div className="ml-2 flex items-center justify-center ">
-
               <div className="flex flex-col w-fit">
                 <span>created At</span>
-
               </div>
 
               <Dropdown>
@@ -108,8 +103,8 @@ const Goals: FunctionComponent<GoalsProps> = ({ goals }) => {
                     Create a copy
                   </DropdownItem>
                   <DropdownItem
-                  color="danger"
-                  variant="flat"
+                    color="danger"
+                    variant="flat"
                     key="delete"
                     shortcut="⌘D"
                     onClick={() => handleDeleteGoalFn(goal.id)}

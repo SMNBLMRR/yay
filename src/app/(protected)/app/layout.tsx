@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 
 import authOptions from "@/lib/authOptions";
-import { getUserInfo } from "@/lib/user";
+import { getUserInfo } from "@/queries/user";
 import { getServerSession } from "next-auth";
 import Info from "./(ui)/info-component";
 

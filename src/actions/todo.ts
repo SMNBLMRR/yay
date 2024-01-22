@@ -2,7 +2,7 @@
 import {
   addGoalTodoService,
   handleDeleteGoalByIdService,
-} from "@/app/services/todo";
+} from "@/services/todo";
 import { InvalidAddTodoGoalException } from "@/exceptions/error";
 import { log } from "@/lib/log";
 import { validateAddTodoGoal } from "@/schema/todo";
