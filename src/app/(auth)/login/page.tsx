@@ -25,6 +25,7 @@ const Login: FunctionComponent<LoginProps> = () => {
   return (
     <>
       <Header />
+      <h1>LOGIN PAgE</h1>
       <div className="h-[calc(100vh-64px)] w-full flex justify-center items-center">
         <div className="flex flex-col w-1/4 m-auto">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
