@@ -11,7 +11,7 @@ export type Inputs = {
 
 interface FormInputProps {
   name: string;
-  register?:any
+  register?: any;
   inputProps?: any;
   classNames?: any;
   isDatePickerVisible?: boolean;
@@ -35,11 +35,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({
           type="text"
           placeholder="Add task..."
           classNames={{
-            input: [
-              "bg-transparent",
-              "w-full",
-              ...(classNames?.input || []),
-            ],
+            input: ["bg-transparent", "w-full", ...(classNames?.input || [])],
             innerWrapper: [
               "bg-transparent",
               ...(classNames?.innerWrapper || []),
@@ -59,7 +55,7 @@ const FormInput: FunctionComponent<FormInputProps> = ({
       {/* filter | options section */}
       <div className="ml-2 flex w-auto">
         <div className="flex flex-grow items-center justify-center mx-1">
-          <TaskPriority />
+          <TaskPriority register={register} />
         </div>
         {isDatePickerVisible ? (
           <div className="flex flex-grow items-center justify-center mx-1">

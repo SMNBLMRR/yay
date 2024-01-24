@@ -21,9 +21,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
           </p>
         </NavbarBrand>
         <NavbarContent justify="end">
-          <NavbarItem>
-
-          </NavbarItem>
+          <NavbarItem></NavbarItem>
           <NavbarItem>
             <Button
               as={Link}

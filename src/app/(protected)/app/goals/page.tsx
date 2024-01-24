@@ -17,7 +17,7 @@ const Today: FunctionComponent<TodayProps> = async () => {
   let todo, goals;
   try {
     todo = await getTodoList(session.user.id);
-    if (todo) goals = await getGoalsFromTodo(todo.id);
+    if (todo) goals = await getGoalsFromTodo(todo.id, "desc");
   } catch (e) {
     console.log(e);
   }
@@ -36,8 +36,14 @@ const Today: FunctionComponent<TodayProps> = async () => {
         </div>
         <div className="flex justify-between items-center">
           <div>
-            <Chip variant="flat" color="secondary" className="mx-3">
-              22
+            <Chip
+              size="sm"
+              variant="flat"
+              color="secondary"
+              radius="sm"
+              className="mx-3 px-2 border border-[#9455d3] bg-transparent"
+            >
+              {goals ? goals.length : 0}
             </Chip>
           </div>
           <div>
@@ -47,10 +53,12 @@ const Today: FunctionComponent<TodayProps> = async () => {
       </div>
       <HeaderTodo />
       {Array.isArray(goals) && goals?.length > 0 ? (
-        <Divider orientation="horizontal" />
+        <Divider className="bg-[#1d1d1d]" orientation="horizontal" />
       ) : null}
       <Suspense fallback={<Spinner color="secondary" />}>
-        <Goals goals={goals} />
+        <div className="my-4">
+          <Goals goals={goals} />
+        </div>
       </Suspense>
     </div>
   );

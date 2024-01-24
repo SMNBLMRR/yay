@@ -1,6 +1,5 @@
 import { FunctionComponent, Suspense } from "react";
 import CalendarComponent from "./(ui)/calendar-component";
-import HeaderCalendar from "./(ui)/header-calendar";
 
 interface CalendarProps {}
 

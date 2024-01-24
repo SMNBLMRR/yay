@@ -23,7 +23,8 @@ const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
         <FormInput register={register} name="name" />
         <div className="flex items-center justify-between">
           <span className="text-sm text-gray-700">
-            By default, tasks added here will be due today. Click + to add a
+            Press <span className="text-[#F72585]">Enter</span> or{" "}
+            <span className="text-[#06d6a0]"> Add task </span> to create a new
             task
           </span>
           {/* filter | add section */}
@@ -31,7 +32,7 @@ const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
             <Button
               radius="sm"
               type="submit"
-              className="h-fit py-1 ml-2 bg-[#06d6a0] border border-[#06d6a0] text-black"
+              className="h-fit py-1 ml-2 border border-[#06d6a0] text-[#06d6a0] bg-transparent"
             >
               Add Task
             </Button>

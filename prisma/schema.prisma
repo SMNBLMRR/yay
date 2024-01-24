@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  //directUrl = env("DIRECT_URL")
 }
 
 model Account {
@@ -80,12 +80,20 @@ model Todo {
   userId    String
 }
 
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
 model Goals {
   id          Int      @id @default(autoincrement())
   todo        Todo     @relation(fields: [todoId], references: [id])
   todoId      String
   name        String
   description String?
+  done        Boolean  @default(false)
+  priority    Priority @default(LOW)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

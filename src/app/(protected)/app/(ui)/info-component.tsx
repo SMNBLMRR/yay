@@ -15,6 +15,7 @@ import { FaRegFileLines } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 import { TbSettings } from "react-icons/tb";
 import { IoCalendarOutline } from "react-icons/io5";
+import Link from "next/link";
 
 interface InfoProps {
   user: any;
@@ -47,20 +48,7 @@ const Info: FunctionComponent<InfoProps> = ({ name, email }) => {
           >
             New file
           </DropdownItem>
-          <DropdownItem
-            key="custom_theme"
-            startContent={<CgDarkMode />}
-            // endContent={
-            //   <Switch
-            //     defaultSelected
-            //     size="md"
-            //     color="success"
-            //     startContent={<MdOutlineWbSunny />}
-            //     endContent={<IoMoonOutline />}
-            //   >
-            //   </Switch>
-            // }
-          >
+          <DropdownItem key="custom_theme" startContent={<CgDarkMode />}>
             Theme
           </DropdownItem>
           <DropdownItem
@@ -99,14 +87,24 @@ const Info: FunctionComponent<InfoProps> = ({ name, email }) => {
           <Tooltip
             placement="right"
             content={
-              <div className="px-1 py-2 flex justify-between items-center cursor-pointer">
-                <div>
-                  <span className="font-light">Add file</span>
+              <div className="flex flex-col">
+                <div className="px-1 py-2 flex justify-between items-center cursor-pointer">
+                  <div>
+                    <span className="font-light">Add file</span>
+                  </div>
+                  <div className="ml-2">
+                    <span>
+                      <Kbd keys={["command"]}>N</Kbd>
+                    </span>
+                  </div>
                 </div>
-                <div className="ml-2">
-                  <span>
-                    <Kbd keys={["command"]}>N</Kbd>
-                  </span>
+                <div className="px-1 py-2">
+                  <Link href="/app/goals/completed">
+                    <span>Completed</span>
+                  </Link>
+                </div>
+                <div className="px-1 py-2">
+                  <span>soon</span>
                 </div>
               </div>
             }
@@ -131,11 +129,10 @@ const Info: FunctionComponent<InfoProps> = ({ name, email }) => {
               </div>
             }
           >
-          <div className="bg-[#0f0e0e] p-1 h-[40px] rounded-xl flex justify-center items-center mt-2">
-            <IoCalendarOutline color="text-gray-600" />
-          </div>
+            <div className="bg-[#0f0e0e] p-1 h-[40px] rounded-xl flex justify-center items-center mt-2">
+              <IoCalendarOutline color="text-gray-600" />
+            </div>
           </Tooltip>
-
 
           <Tooltip
             placement="right"
@@ -147,12 +144,10 @@ const Info: FunctionComponent<InfoProps> = ({ name, email }) => {
               </div>
             }
           >
-          <div className="bg-[#0f0e0e] p-1 h-[40px] rounded-xl flex justify-center items-center mt-2">
-            <TbSettings color="text-gray-600" />
-          </div>
+            <div className="bg-[#0f0e0e] p-1 h-[40px] rounded-xl flex justify-center items-center mt-2">
+              <TbSettings color="text-gray-600" />
+            </div>
           </Tooltip>
-
-
         </div>
       </div>
 

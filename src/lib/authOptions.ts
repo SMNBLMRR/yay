@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { createTodo } from "@/queries/todo";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { IdentityProvider } from "@prisma/client";
 import { AuthOptions } from "next-auth";
@@ -43,6 +44,18 @@ const authOptions: AuthOptions = {
     async signIn({ user, account, profile, email, credentials }) {
       if (!user.email) {
         return false;
+      }
+
+      try {
+        let todo = await prisma.todo.findFirst({
+          where: {
+            userId: user.id,
+          },
+        });
+        if (!todo) await createTodo("today", user.id);
+      } catch (error) {
+        //add toast notification in case of error
+        console.log(error);
       }
 
       //check the user provider
@@ -109,4 +122,3 @@ const authOptions: AuthOptions = {
 };
 
 export default authOptions;
-

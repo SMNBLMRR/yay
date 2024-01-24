@@ -2,13 +2,16 @@
 import { Select, SelectItem } from "@nextui-org/react";
 import { FunctionComponent } from "react";
 
-interface TaskPriorityProps {}
+interface TaskPriorityProps {
+  register: any;
+}
 
-const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
+const TaskPriority: FunctionComponent<TaskPriorityProps> = ({ register }) => {
   return (
     <>
       <Select
         radius="sm"
+        {...register("priority")}
         aria-label="select-priority"
         placeholder="Priority"
         labelPlacement="outside"
@@ -45,12 +48,12 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
         }}
       >
         <SelectItem
-          key={1}
+          key="LOW"
           classNames={{
             base: [
-              "bg-[#06d6a0]",
-              "text-white",
-              `dark:hover:bg-[#06d6a0]`,
+              "my-1 border border-[#06d6a0] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-[#06d6a0] dark:hover:text-[#06d6a0] dark:focus:text-[#06d6a0]",
+              "dark:hover:border-[#06d6a0] dark:focus:border-[#06d6a0]",
               "px-[10px]",
               "py-0.5",
             ],
@@ -60,12 +63,12 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
           LOW
         </SelectItem>
         <SelectItem
-          key={2}
+          key="MEDIUM"
           classNames={{
             base: [
-              "bg-[#ffd60a]",
-              "text-white",
-              "dark:hover:bg-[#ffd60a]",
+              "my-1 border border-[#ffd60a] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-[#ffd60a] dark:hover:text-[#ffd60a] dark:focus:text-[#ffd60a]",
+              "dark:hover:border-[#ffd60a] dark:focus:border-[#ffd60a]",
               "px-[10px]",
               "py-0.5",
             ],
@@ -75,12 +78,12 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = () => {
           MEDIUM
         </SelectItem>
         <SelectItem
-          key={3}
+          key="HIGH"
           classNames={{
             base: [
-              "bg-[#ff0054]",
-              "text-white",
-              `dark:hover:bg-[#ff0054]`,
+              "my-1 border border-[#ff0054] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-[#ff0054] dark:hover:text-[#ff0054] dark:focus:text-[#ff0054]",
+              "dark:hover:border-[#ff0054] dark:focus:border-[#ff0054]",
               "px-[10px]",
               "py-0.5",
             ],
