@@ -1,19 +1,43 @@
 "use client";
 import { addGoalTodoAction } from "@/actions/todo";
+import { cn } from "@/lib/utils";
 import { GoalPayload } from "@/types/todo";
 import FormInput from "@/ui/Form/FormInput";
-import { Button } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 import { FunctionComponent, useTransition } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 interface HeaderTodoProps {}
 
 const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
   const { handleSubmit, register } = useForm<GoalPayload>();
-  const [, startTransition] = useTransition();
+  const [isPendingAddTodo, addGoalTransaction] = useTransition();
   const onSubmit: SubmitHandler<GoalPayload> = async (data) => {
-    startTransition(async () => {
-      await addGoalTodoAction(data as GoalPayload);
+    addGoalTransaction(async () => {
+      let result = await addGoalTodoAction(data as GoalPayload);
+      console.log(result);
+      if(result?.error){
+        toast.error("Error adding todo",{
+          icon:"❌",
+          style: {
+            backgroundColor:"#b7b7b7",
+            height:"fit-content",
+            border: '1px solid #713200',
+            color: '#713200',
+          },
+        })
+        return;
+      } 
+      toast.success("Successfully added",{
+        icon:"✅",
+        style: {
+          backgroundColor:"#b7b7b7",
+          height:"fit-content",
+          border: '1px solid #713200',
+          color: '#713200',
+        },
+      })
     });
   };
 
@@ -34,7 +58,20 @@ const HeaderTodo: FunctionComponent<HeaderTodoProps> = () => {
               type="submit"
               className="h-fit py-1 ml-2 border border-[#06d6a0] text-[#06d6a0] bg-transparent"
             >
-              Add Task
+              <div className="flex justify-between items-center">
+                <span>Add Task</span>
+
+                {isPendingAddTodo ? (
+                  <Spinner
+                    className="ml-2"
+                    classNames={{
+                      circle1: cn("border-b-[#06d6a0]"),
+                      circle2: cn("border-[#06d69e4e]"),
+                    }}
+                    size="sm"
+                  />
+                ) : null}
+              </div>
             </Button>
           </div>
         </div>

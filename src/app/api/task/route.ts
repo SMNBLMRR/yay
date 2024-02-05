@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     if (todo) {
       const startDate = new Date("2024-01-01");
       const endDate = new Date("2024-01-31");
-      let events = await prisma.goals.findMany({
+      let events = await prisma.goal.findMany({
         where: {
           todoId: todo?.id,
           createdAt: {
@@ -28,4 +28,3 @@ export async function GET(req: NextRequest) {
   }
   return NextResponse.json({ msg: "nothing to print" });
 }
-

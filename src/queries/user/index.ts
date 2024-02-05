@@ -1,19 +1,19 @@
 import { prisma } from "@/lib/prisma";
-export async function getUserInfo(userId:string){
+export async function getUserInfo(userId: string) {
   return await prisma.user.findFirst({
-    where:{
-      id:userId
+    where: {
+      id: userId,
     },
-    select:{
-      todo:{
-        orderBy:{
-          createdAt:"desc"
-        }
+    select: {
+      todo: {
+        orderBy: {
+          createdAt: "desc",
+        },
       },
-      password:false,
-      email:false,
-      emailVerified:false,
-      id:false,
-    }
-  })
+      password: false,
+      email: false,
+      emailVerified: false,
+      id: false,
+    },
+  });
 }

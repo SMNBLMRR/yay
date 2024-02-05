@@ -45,7 +45,6 @@ const authOptions: AuthOptions = {
       if (!user.email) {
         return false;
       }
-
       try {
         let todo = await prisma.todo.findFirst({
           where: {

@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { Select, SelectItem } from "@nextui-org/react";
 import { FunctionComponent } from "react";
 
@@ -10,87 +11,92 @@ const TaskPriority: FunctionComponent<TaskPriorityProps> = ({ register }) => {
   return (
     <>
       <Select
-        radius="sm"
         {...register("priority")}
         aria-label="select-priority"
         placeholder="Priority"
         labelPlacement="outside"
         className="max-w-xs text-white placeholder:text-white"
         classNames={{
-          base: [
-            "h-[30px]",
-            "dark:w-full",
-            "w-full",
-            "text-white",
-            "dark:text-white",
-          ],
+          popoverContent: ["bg-[#b7b7b7] rounded-[5px]"],
           trigger: [
+            "rounded-[5px]",
             "h-auto",
-            "dark:h-auto",
             "min-h-[30px]",
-            "bg-[#0f0e0e]",
-            "hover:bg-[#0f0e0e]",
-            "hover:!bg-[#0f0e0e]",
-            "dark:hover:!bg-[#0f0e0e]",
-            "text-white",
-            "dark:text-white",
+            "bg-[#b7b7b7]",
+            "dark:hover:!bg-[#b7b7b7]",
+            "text-black",
           ],
           innerWrapper: [
             "w-[5rem]",
             "h-auto",
-            "bg-[#0f0e0e]",
-            "hover:bg-[#0f0e0e]",
-            "text-white",
-            "dark:text-white",
+            "bg-[#b7b7b7]",
+            "hover:bg-[#b7b7b7]",
+            "text-black",
+            "dark:text-black",
           ],
-          value: ["text-[#B9B4FF]"],
-          selectorIcon: ["text-[#B9B4FF]"],
+          value: ["text-black dark:text-black group-data-[has-value=true]:text-black"],
+          selectorIcon: ["text-black"],
         }}
       >
         <SelectItem
+          textValue="LOW"
           key="LOW"
+          disableAnimation
           classNames={{
+            // #06d6a0
             base: [
-              "my-1 border border-[#06d6a0] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
-              "text-[#06d6a0] dark:hover:text-[#06d6a0] dark:focus:text-[#06d6a0]",
-              "dark:hover:border-[#06d6a0] dark:focus:border-[#06d6a0]",
+              "my-1 border border-black dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-black dark:hover:text-black dark:focus:text-black",
               "px-[10px]",
               "py-0.5",
             ],
             selectedIcon: ["hidden"],
           }}
         >
-          LOW
+          <div className="flex items-center justify-between">
+            <span>LOW</span>
+            <span className="w-2 h-2 block relative bg-[#06d6a0] rounded-full"></span>
+          </div>
         </SelectItem>
         <SelectItem
+          textValue="MEDIUM"
           key="MEDIUM"
+          disableAnimation
           classNames={{
+            // #ffd60a
             base: [
-              "my-1 border border-[#ffd60a] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
-              "text-[#ffd60a] dark:hover:text-[#ffd60a] dark:focus:text-[#ffd60a]",
-              "dark:hover:border-[#ffd60a] dark:focus:border-[#ffd60a]",
+              "my-1 border border-black dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-black dark:hover:text-black dark:focus:text-black",
               "px-[10px]",
               "py-0.5",
             ],
             selectedIcon: ["hidden"],
           }}
         >
-          MEDIUM
+          <div className="flex items-center justify-between">
+            <span>MEDIUM</span>
+            <span className="w-2 h-2 block relative bg-[#ffd60a] rounded-full"></span>
+          </div>
         </SelectItem>
         <SelectItem
+          textValue="HIGH"
           key="HIGH"
+          disableAnimation
           classNames={{
+            // #ff0054
             base: [
-              "my-1 border border-[#ff0054] dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
-              "text-[#ff0054] dark:hover:text-[#ff0054] dark:focus:text-[#ff0054]",
-              "dark:hover:border-[#ff0054] dark:focus:border-[#ff0054]",
+              "my-1 border border-black dark:bg-transparent dark:hover:bg-transparent dark:focus:bg-transparent",
+              "text-black dark:hover:text-black dark:focus:text-black",
               "px-[10px]",
               "py-0.5",
             ],
             selectedIcon: ["hidden"],
           }}
         >
-          HIGH
+          <div className="flex items-center justify-between">
+            <span>HIGH</span>
+            <span className="w-3 h-3 block relative bg-[#ff0054] rounded-full"></span>
+          </div>
         </SelectItem>
       </Select>
     </>

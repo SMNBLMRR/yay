@@ -22,7 +22,7 @@ export async function getTodoList(userId: string) {
 }
 
 export async function addTodoGoal(payload: GoalPayload, todoId: string) {
-  let createdGaol = await prisma.goals.create({
+  let createdGaol = await prisma.goal.create({
     data: {
       name: payload.name,
       description: payload.description,
@@ -33,23 +33,45 @@ export async function addTodoGoal(payload: GoalPayload, todoId: string) {
   return createdGaol;
 }
 
-export async function deleteTodoGoal(id: string, todoId: string) {
-  return await prisma.goals.deleteMany({
+export async function createSubtask(
+  payload: { name: string },
+  todoId: string,
+  goalId: string
+) {
+  let createdSubtask = await prisma.goal.update({
     where: {
-      id: Number(id),
+      id: goalId,
+    },
+    data: {
+      subTasks: {
+        create: {
+          todoId,
+          ...payload,
+        },
+      },
+    },
+  });
+  console.log(createdSubtask);
+  console.log(payload);
+}
+
+export async function deleteTodoGoal(id: string, todoId: string) {
+  return await prisma.goal.deleteMany({
+    where: {
+      id: id,
       todoId,
     },
   });
 }
 
 export async function updateTodoGoal(
-  id: number,
+  id: string,
   todoId: string,
   payload: GoalPayload
 ) {
-  let value = await prisma.goals.update({
+  let value = await prisma.goal.update({
     where: {
-      id: Number(id),
+      id,
       todoId,
     },
     data: {
@@ -64,14 +86,19 @@ export async function getGoalsFromTodo(
   orderBy: "asc" | "desc",
   done: boolean = false
 ) {
-  let goals = await prisma.goals.findMany({
+  let goals = await prisma.goal.findMany({
     where: {
-      todoId: todoId,
+      todoId,
       done,
+      OR: [{ parentTaskId: null }, { parentTaskId: "" }],
     },
     orderBy: {
       createdAt: orderBy,
-    },
+    },include:{
+      parentTask:true,
+      subTasks:true
+    }
   });
+  console.log(goals);
   return goals;
 }
