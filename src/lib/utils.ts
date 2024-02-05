@@ -7,7 +7,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const priorityLabel = {
-  LOW:"border-[#06d6a0] text-[#06d6a0]",
-  MEDIUM: "border-[#ffd60a] text-[#ffd60a]",
-  HIGH: "border-[#ff0054] text-[#ff0054]"
+  "LOW":"border-[#06d6a0] text-[#06d6a0]",
+  "MEDIUM": "border-[#ffd60a] text-[#ffd60a]",
+  "HIGH": "border-[#ff0054] text-[#ff0054]"
+}
+
+export const priorityLabelBg = {
+  "LOW":"bg-[#06d6a0]",
+  "MEDIUM": "bg-[#ffd60a]",
+  "HIGH": "bg-[#ff0054]"
 }

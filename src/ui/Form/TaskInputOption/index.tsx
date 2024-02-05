@@ -12,26 +12,27 @@ const TaskInputOption: FunctionComponent<TaskInputOptionProps> = () => {
     <>    
     <Popover
         placement="bottom"
-        radius="sm"
+        className="rounded-[5px]"
         showArrow={true}
         isOpen={isOpen}
         onOpenChange={(open) => setIsOpen(open)}
         classNames={{
           base: ["h-[30px]", "dark:w-full", "w-[30px]"],
           trigger: [
+            "rounded-[5px]",
             "h-auto",
             "dark:h-auto",
             "min-h-[30px]",
-            "bg-[#0f0e0e]",
-            "hover:bg-[#0f0e0e]",
-            "hover:!bg-[#0f0e0e]",
-            "dark:hover:!bg-[#0f0e0e]",
+            "bg-[#b7b7b7]",
+            "hover:bg-[#b7b7b7]",
+            "hover:!bg-[#b7b7b7]",
+            "dark:hover:bg-[#b7b7b7]",
           ],
         }}
       >
-        <PopoverTrigger className="">
-          <div className="flex items-center justify-center px-2 rounded-lg">
-            <BiDotsHorizontalRounded color="#B9B4FF" />
+        <PopoverTrigger >
+          <div className="flex items-center justify-center px-2">
+            <BiDotsHorizontalRounded color="black" />
           </div>
         </PopoverTrigger>
         <PopoverContent>

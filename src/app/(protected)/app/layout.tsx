@@ -10,7 +10,6 @@ interface LayoutProps {
 }
 
 const Layout: FunctionComponent<LayoutProps> = async ({ children }) => {
-
   const session = await getServerSession(authOptions);
   const userInfo = await getUserInfo(session?.user.id);
 

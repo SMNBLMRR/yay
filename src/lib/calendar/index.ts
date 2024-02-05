@@ -1,6 +1,13 @@
-import { startOfMonth, startOfWeek, addDays, getYear, format, isToday } from "date-fns";
+import {
+  startOfMonth,
+  startOfWeek,
+  addDays,
+  getYear,
+  format,
+  isToday,
+} from "date-fns";
 
-export function getMonth(month:number = new Date().getMonth()) {
+export function getMonth(month: number = new Date().getMonth()) {
   //return current month in number es. JAN -> 0
   month = Math.floor(month);
   //return current year es. 2024
@@ -10,7 +17,7 @@ export function getMonth(month:number = new Date().getMonth()) {
   const startOfTheWeek = startOfWeek(firstDayOfTheMonth);
   let currentMonthCount = 0 - startOfTheWeek.getDay();
 
-  const daysMatrix = new Array(5).fill([]).map(() => {
+  const daysMatrix = new Array(6).fill([]).map(() => {
     return new Array(7).fill(null).map(() => {
       const currentDate = addDays(startOfTheWeek, currentMonthCount++);
       return format(currentDate, "yyyy-MM-dd"); // Adjust the format as needed
@@ -20,7 +27,7 @@ export function getMonth(month:number = new Date().getMonth()) {
   return daysMatrix;
 }
 
-export function getCurrentDayClass(day:string) {
+export function getCurrentDayClass(day: string) {
   const formattedDay = format(day, "dd-MM-yy");
   const isTodayFormatted = isToday(day) ? format(new Date(), "dd-MM-yy") : "";
   return formattedDay === isTodayFormatted
